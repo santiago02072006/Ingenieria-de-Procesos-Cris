@@ -35,20 +35,16 @@ ALLOWED_DOMAIN = "gmail.com"  # Cambia esto por tu dominio de Workspace si es ne
 
 def verify_google_token(token):
     try:
+        # Esto solo comprueba que el token lo firmó Google y es para tu Client ID
         idinfo = id_token.verify_oauth2_token(
             token,
             grequests.Request(),
             GOOGLE_CLIENT_ID
         )
-
-        # if idinfo.get("hd") != ALLOWED_DOMAIN:
-        #     return None
-        
-
+        # Retornamos todo el diccionario sin preguntar por dominios o correos
         return idinfo
-
     except Exception as e:
-        print("Error validando token:", e)
+        print(f"Error de validación (posible Client ID incorrecto): {e}")
         return None
 
 
