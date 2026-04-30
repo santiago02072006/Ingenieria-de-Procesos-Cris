@@ -41,9 +41,9 @@ def verify_google_token(token):
             GOOGLE_CLIENT_ID
         )
 
-        # Validar dominio Workspace
         # if idinfo.get("hd") != ALLOWED_DOMAIN:
-        #    return None
+        #     return None
+        
 
         return idinfo
 
