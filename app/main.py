@@ -10,8 +10,8 @@ from io import BytesIO
 from google.oauth2 import id_token
 from google.auth.transport import requests as grequests
 
-from app.sentiment import analizar_sentimiento
-from app.text_utils import (
+from sentiment import analizar_sentimiento
+from text_utils import (
     normalizar_texto,
     es_solo_simbolos,
     es_texto_basura,
