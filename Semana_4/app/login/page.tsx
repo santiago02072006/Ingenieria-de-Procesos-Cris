@@ -36,13 +36,6 @@ export default async function LoginPage() {
 
           <LoginForm />
 
-          <div className="mt-6 text-center">
-            <span className="text-app-muted">¿No tienes cuenta? </span>
-            <Link href="/register" className="text-primary hover:underline">
-              Regístrate aquí
-            </Link>
-          </div>
-
           <div className="mt-8 pt-6 border-t border-app">
             <div className="text-xs text-app-muted text-center">
               Al continuar, aceptas nuestros Términos de Servicio y Política de Privacidad

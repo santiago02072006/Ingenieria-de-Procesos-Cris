@@ -1,123 +1,441 @@
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Code2,
+  Rocket,
+  Users,
+  TrendingUp,
+  Shield,
+  Zap,
+  GitBranch,
+  DollarSign,
+  Cloud,
+  BarChart3,
+  Box,
+  ChevronRight,
+  Play,
+  Lock,
+} from "lucide-react";
 
-const pillars = [
+const stats = [
+  { label: "Soluciones Reutilizadas", value: "15.2K", icon: Box },
+  { label: "Ingresos Generados", value: "$4.8M", icon: DollarSign },
+  { label: "Empresas Activas", value: "2,340", icon: Users },
+  { label: "Módulos Compartidos", value: "8,920", icon: GitBranch },
+];
+
+const features = [
   {
-    title: "Marketplace",
-    description:
-      "Explora un catálogo curado de soluciones listas para adoptar: integraciones, automatizaciones y módulos probados en contextos reales de negocio.",
+    icon: Code2,
+    title: "Desarrollo Modular",
+    description: "Software empresarial construido como bloques reutilizables",
+    gradient: "from-red-500 to-orange-500",
   },
   {
-    title: "Reutilización",
+    icon: GitBranch,
+    title: "Ecosistema de Forks",
     description:
-      "Deja de reinventar la rueda. Cada entrega alimenta un acervo común: versionado, documentación y trazabilidad para que el conocimiento escale.",
+      "Evoluciona y adapta soluciones existentes con versionado inteligente",
+    gradient: "from-orange-500 to-amber-500",
   },
   {
-    title: "Cloud Runtime",
-    description:
-      "Despliega y valida soluciones en un entorno cloud seguro: pruebas, demos y handoff sin fricción entre clientes y equipos de desarrollo.",
+    icon: DollarSign,
+    title: "Economía de Regalías",
+    description: "Monetiza cada reutilización con pagos automáticos en cascada",
+    gradient: "from-red-500 to-pink-500",
   },
-] as const;
+  {
+    icon: Cloud,
+    title: "Runtime Cloud",
+    description: "Ejecuta y escala aplicaciones con infraestructura managed",
+    gradient: "from-blue-500 to-cyan-500",
+  },
+  {
+    icon: Shield,
+    title: "Seguridad Automatizada",
+    description: "Escaneo continuo, validación de integridad y compliance",
+    gradient: "from-purple-500 to-pink-500",
+  },
+  {
+    icon: BarChart3,
+    title: "ROI Empresarial",
+    description: "Métricas en tiempo real de ahorro, productividad y eficiencia",
+    gradient: "from-green-500 to-emerald-500",
+  },
+];
+
+const howItWorks = [
+  {
+    step: "01",
+    title: "Publicar Problema",
+    description:
+      "Empresas definen desafíos operativos con requisitos técnicos y presupuesto",
+    icon: Rocket,
+  },
+  {
+    step: "02",
+    title: "Desarrollar Solución",
+    description:
+      "Desarrolladores crean software modular, reutilizable y escalable",
+    icon: Code2,
+  },
+  {
+    step: "03",
+    title: "Marketplace Inteligente",
+    description:
+      "Soluciones se convierten en activos comercializables en el ecosistema",
+    icon: Box,
+  },
+  {
+    step: "04",
+    title: "Reutilización & Regalías",
+    description:
+      "Cada fork genera ingresos pasivos para los desarrolladores originales",
+    icon: TrendingUp,
+  },
+];
 
 export default function HomePage() {
   return (
-    <div className="relative">
-      <div
-        className="pointer-events-none absolute inset-0 bg-[size:48px_48px] bg-grid-zinc opacity-[0.65] [mask-image:radial-gradient(ellipse_80%_60%_at_50%_-10%,#000_50%,transparent_100%)]"
-        aria-hidden
-      />
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[color:var(--primary)]/40 to-transparent" aria-hidden />
+    <div className="min-h-screen bg-gradient-to-b from-background via-background to-card">
 
-      <section className="relative mx-auto max-w-6xl px-4 pb-20 pt-20 sm:pt-24 lg:pt-32">
-        {/* Background accents */}
-        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-          <div className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/3 transform blur-3xl">
-            <div className="h-[420px] w-[900px] rounded-full bg-gradient-to-r from-indigo-600/20 via-violet-600/15 to-cyan-400/10 opacity-60" />
+      {/* Navigation */}
+      <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-xl border-b border-border">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
+              <Code2 className="w-5 h-5 text-white" />
+            </div>
+            <span className="text-xl font-semibold">DevSolve</span>
           </div>
-          <div className="absolute right-0 bottom-0 -translate-x-1/3 translate-y-1/3 transform blur-2xl">
-            <div className="h-[220px] w-[420px] rounded-full bg-gradient-to-tr from-rose-500/8 to-amber-400/6 opacity-60" />
+
+          <div className="hidden md:flex items-center gap-8">
+            <Link
+              href="/marketplace"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Marketplace
+            </Link>
+            <Link
+              href="/ecosystem"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Ecosistema
+            </Link>
+            <Link
+              href="/analytics"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Analytics
+            </Link>
+            <a
+              href="#"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Documentación
+            </a>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <Link
+              href="/login"
+              className="px-4 py-2 text-sm text-foreground hover:text-primary transition-colors"
+            >
+              Iniciar Sesión
+            </Link>
+            <Link
+              href="/register"
+              className="px-4 py-2 text-sm bg-primary hover:bg-primary/90 text-white rounded-lg transition-colors"
+            >
+              Comenzar
+            </Link>
           </div>
         </div>
+      </nav>
 
-        <div className="mx-auto max-w-3xl">
-          <div className="rounded-2xl border border-app bg-app-card-50 px-8 py-12 shadow-lg backdrop-blur-md">
-            <p className="inline-flex items-center gap-2 rounded-full bg-primary-15 px-3 py-1 text-sm font-medium text-primary">
-              MVP · Next.js · Supabase
-            </p>
-
-            <h1 className="mt-6 text-4xl font-extrabold leading-tight text-app-foreground sm:text-5xl lg:text-6xl">
-              Convierte problemas empresariales en soluciones reutilizables.
-            </h1>
-
-            <p className="mt-4 text-lg text-app-foreground max-w-2xl">
-              DevSolve es el ecosistema donde los clientes publican retos concretos y los desarrolladores entregan piezas de software
-              que otros pueden adoptar, extender y operar en la nube.
-            </p>
-
-            <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-start">
-              <Button href="/bounties" size="lg" className="w-full min-w-[200px] sm:w-auto">
-                Publicar Problema
-              </Button>
-
-              <Button href="/marketplace" variant="outline" size="lg" className="w-full min-w-[200px] sm:w-auto">
-                Explorar Soluciones
-              </Button>
+      {/* Hero Section */}
+      <section className="pt-32 pb-20 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center max-w-4xl mx-auto">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/20 rounded-full mb-6">
+              <Zap className="w-4 h-4 text-primary" />
+              <span className="text-sm text-primary">
+                Marketplace Inteligente de Microsoftware Empresarial
+              </span>
             </div>
 
-            <p className="mt-6 text-sm text-app-muted text-center sm:text-left">
-              ¿Eres desarrollador?{' '}
-              <Link href="/login" className="font-medium text-primary underline-offset-4 hover:text-primary hover:underline">
-                Accede al tablero de bounties
-              </Link>
-            </p>
-          </div>
-        </div>
-      </section>
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white">
+              Convierte software empresarial en activos reutilizables
+            </h1>
 
-      <section className="relative border-t border-app bg-app-card-40 py-20 sm:py-24">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-semibold tracking-tight text-app-foreground sm:text-4xl">Tres pilares del producto</h2>
-            <p className="mt-4 text-lg text-app-muted">
-              Un mismo flujo conecta la demanda de negocio con el catálogo técnico y la operación en producción.
+            <p className="text-xl text-muted-foreground mb-10 leading-relaxed">
+              Las empresas publican problemas. Los desarrolladores construyen
+              soluciones.
+              <br />
+              El ecosistema reutiliza, monetiza y evoluciona el software.
             </p>
+
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Link
+                href="/marketplace"
+                className="px-8 py-4 bg-primary hover:bg-primary/90 text-white rounded-lg font-medium transition-all hover:scale-105 flex items-center gap-2"
+              >
+                Explorar Marketplace
+                <ChevronRight className="w-5 h-5" />
+              </Link>
+              <Link
+                href="/bounties"
+                className="px-8 py-4 bg-card hover:bg-muted border border-border text-foreground rounded-lg font-medium transition-all hover:scale-105"
+              >
+                Publicar Problema
+              </Link>
+              <Link
+                href="/register"
+                className="px-8 py-4 bg-transparent hover:bg-card border border-border text-foreground rounded-lg font-medium transition-all"
+              >
+                Convertirme en Desarrollador
+              </Link>
+            </div>
           </div>
-          <div className="mt-14 grid gap-6 md:grid-cols-3">
-            {pillars.map((pillar) => (
-              <Card key={pillar.title} className="flex flex-col transition-colors hover:border-app">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <span className="h-2 w-2 rounded-full bg-primary shadow-[0_0_12px] shadow-primary" aria-hidden />
-                    {pillar.title}
-                  </CardTitle>
-                  <CardDescription>{pillar.description}</CardDescription>
-                </CardHeader>
-                <CardContent className="mt-auto pt-2">
-                  <span className="text-xs font-medium uppercase tracking-wider text-primary">DevSolve</span>
-                </CardContent>
-              </Card>
+
+          {/* Stats */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20">
+            {stats.map((stat, index) => (
+              <div
+                key={index}
+                className="bg-card/50 backdrop-blur border border-border rounded-xl p-6 hover:bg-card transition-colors"
+              >
+                <stat.icon className="w-8 h-8 text-primary mb-3" />
+                <div className="text-3xl font-bold mb-1">{stat.value}</div>
+                <div className="text-sm text-muted-foreground">{stat.label}</div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="relative border-t border-app py-16">
-        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-4 text-center sm:flex-row sm:text-left sm:px-6 lg:px-8">
-          <div>
-            <h3 className="text-xl font-semibold text-app-foreground">¿Listo para el siguiente sprint de valor?</h3>
-            <p className="mt-2 max-w-xl text-app-muted">
-              Publica un bounty con contexto y criterios de aceptación, o navega el marketplace para acelerar tu roadmap.
+      {/* How It Works */}
+      <section className="py-20 px-6 bg-gradient-to-b from-card to-background">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-4">
+              Cómo Funciona el Ecosistema
+            </h2>
+            <p className="text-xl text-muted-foreground">
+              De problema a solución a activo reutilizable
             </p>
           </div>
-          <div className="flex shrink-0 flex-col gap-3 sm:flex-row">
-            <Button href="/bounties">Publicar Problema</Button>
-            <Button href="/marketplace" variant="outline">
-              Explorar Soluciones
-            </Button>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {howItWorks.map((item, index) => (
+              <div key={index} className="relative">
+                <div className="bg-card border border-border rounded-xl p-6 hover:border-primary/50 transition-all">
+                  <div className="text-6xl font-bold text-primary/10 mb-4">
+                    {item.step}
+                  </div>
+                  <item.icon className="w-10 h-10 text-primary mb-4" />
+                  <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
+                  <p className="text-muted-foreground">{item.description}</p>
+                </div>
+                {index < howItWorks.length - 1 && (
+                  <ChevronRight className="hidden lg:block absolute -right-3 top-1/2 -translate-y-1/2 w-6 h-6 text-primary/30" />
+                )}
+              </div>
+            ))}
           </div>
         </div>
       </section>
+
+      {/* Features Grid */}
+      <section className="py-20 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-4">
+              Plataforma de Nueva Generación
+            </h2>
+            <p className="text-xl text-muted-foreground">
+              Tecnología avanzada para el desarrollo de software reutilizable
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {features.map((feature, index) => (
+              <div
+                key={index}
+                className="bg-card border border-border rounded-xl p-6 hover:border-primary/50 transition-all group"
+              >
+                <div
+                  className={`w-12 h-12 bg-gradient-to-br ${feature.gradient} rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}
+                >
+                  <feature.icon className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>
+                <p className="text-muted-foreground">{feature.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 px-6 bg-gradient-to-br from-primary/10 via-background to-accent/10">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            Únete al futuro del desarrollo de software
+          </h2>
+          <p className="text-xl text-muted-foreground mb-10">
+            Empresas, desarrolladores y el ecosistema trabajando juntos para
+            crear software mejor y más eficiente
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link
+              href="/register"
+              className="px-10 py-4 bg-primary hover:bg-primary/90 text-white rounded-lg font-medium transition-all hover:scale-105 flex items-center gap-2"
+            >
+              <Play className="w-5 h-5" />
+              Comenzar Ahora
+            </Link>
+            <a
+              href="#"
+              className="px-10 py-4 bg-transparent border border-border hover:bg-card text-foreground rounded-lg font-medium transition-all"
+            >
+              Ver Documentación
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="border-t border-border py-12 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-10">
+            <div>
+              <h4 className="font-semibold mb-4">Producto</h4>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li>
+                  <Link
+                    href="/marketplace"
+                    className="hover:text-foreground transition-colors"
+                  >
+                    Marketplace
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/runtime"
+                    className="hover:text-foreground transition-colors"
+                  >
+                    Runtime Cloud
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/security"
+                    className="hover:text-foreground transition-colors"
+                  >
+                    Seguridad
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/subscriptions"
+                    className="hover:text-foreground transition-colors"
+                  >
+                    Precios
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-semibold mb-4">Desarrolladores</h4>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li>
+                  <a href="#" className="hover:text-foreground transition-colors">
+                    Documentación
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-foreground transition-colors">
+                    API Reference
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-foreground transition-colors">
+                    SDK
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-foreground transition-colors">
+                    Comunidad
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-semibold mb-4">Empresa</h4>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li>
+                  <a href="#" className="hover:text-foreground transition-colors">
+                    Sobre Nosotros
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-foreground transition-colors">
+                    Blog
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-foreground transition-colors">
+                    Carreras
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-foreground transition-colors">
+                    Contacto
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-semibold mb-4">Legal</h4>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li>
+                  <a href="#" className="hover:text-foreground transition-colors">
+                    Términos de Servicio
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-foreground transition-colors">
+                    Privacidad
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-foreground transition-colors">
+                    Licencias
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-foreground transition-colors">
+                    Compliance
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-border">
+            <div className="flex items-center gap-2 mb-4 md:mb-0">
+              <div className="w-6 h-6 bg-gradient-to-br from-primary to-accent rounded flex items-center justify-center">
+                <Code2 className="w-4 h-4 text-white" />
+              </div>
+              <span className="font-semibold">DevSolve</span>
+            </div>
+            <p className="text-sm text-muted-foreground">
+              © 2026 DevSolve. Marketplace inteligente de microsoftware
+              empresarial.
+            </p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
