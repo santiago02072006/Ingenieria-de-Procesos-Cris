@@ -214,14 +214,19 @@ export default async function MarketplacePage(props: {
                         <div className="text-xs text-green-500 mb-4">{(s as any).roi ?? ""}</div>
 
                         <div className="space-y-2">
-                          <a
+                          <Link
                             href={`/solutions/${s.id}`}
                             className="w-full inline-flex px-4 py-2 bg-primary hover:bg-primary/90 text-white rounded-lg text-sm font-medium transition-all items-center justify-center gap-2"
                           >
                             Ver Detalles
                             <ArrowRight className="w-4 h-4" />
-                          </a>
-                          <a className="w-full inline-flex px-4 py-2 bg-background border border-border hover:bg-muted text-foreground rounded-lg text-sm font-medium transition-all justify-center">
+                          </Link>
+                          <a
+                            href={(s as any).demo_url ?? undefined}
+                            target={(s as any).demo_url ? "_blank" : undefined}
+                            rel={(s as any).demo_url ? "noopener noreferrer" : undefined}
+                            className="w-full inline-flex px-4 py-2 bg-background border border-border hover:bg-muted text-foreground rounded-lg text-sm font-medium transition-all justify-center"
+                          >
                             Demo en Vivo
                           </a>
                         </div>

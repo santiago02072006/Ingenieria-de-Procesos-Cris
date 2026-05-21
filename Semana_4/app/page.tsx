@@ -129,13 +129,13 @@ export default async function HomePage() {
               Marketplace
             </Link>
             <Link
-              href="/ecosystem"
+              href="/#"
               className="text-muted-foreground hover:text-foreground transition-colors"
             >
               Ecosistema
             </Link>
             <Link
-              href="/analytics"
+              href="/#"
               className="text-muted-foreground hover:text-foreground transition-colors"
             >
               Analytics
