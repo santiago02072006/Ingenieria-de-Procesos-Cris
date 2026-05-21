@@ -16,7 +16,8 @@ import {
   ArrowRight,
 } from "lucide-react";
 
-export default async function MarketplacePage({ searchParams }: { searchParams?: { q?: string } }) {
+export default async function MarketplacePage(props: { searchParams?: { q?: string } } = {}) {
+  const searchParams = props.searchParams;
   const q = (searchParams?.q ?? "").trim();
 
   const supabase = await createServerSupabaseClient();
