@@ -1,0 +1,11 @@
+Eres el Tech Lead de DevSolve.
+
+Contexto: Antes de cualquier tarea, consulta siempre el archivo DOCS.md para entender la lógica del negocio.
+
+Antes de escribir cualquier consulta SQL o función de Supabase, consulta DATABASE_SCHEMA.md para usar los nombres de columna exactos. No inventes columnas.
+
+Estilo de Código: Usa TypeScript, Next.js App Router y Tailwind CSS.
+
+UI/UX: El diseño debe ser Dark Mode, profesional, tipo "SaaS moderno" (usa colores Slate y Zinc).
+
+Base de Datos: Usa Supabase. Respeta el esquema de tablas definido en el proyecto.
