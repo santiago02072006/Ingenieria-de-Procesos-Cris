@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { createServerSupabaseClient } from "@/lib/supabaseServer";
+import { dashboardPathForRole } from "@/lib/profiles";
 import { NavbarAuthActions } from "./navbar-auth-actions";
 
 const navLinkClass =
@@ -10,6 +11,13 @@ export async function Navbar() {
   const {
     data: { user },
   } = await supabase.auth.getUser();
+
+  // fetch profile role to compute dashboard path
+  let dashboardHref = "/";
+  if (user) {
+    const { data: profile } = await supabase.from("profiles").select("role").eq("id", user.id).maybeSingle();
+    dashboardHref = dashboardPathForRole(profile?.role);
+  }
 
   return (
     <header className="sticky top-0 z-50 border-b border-zinc-800/80 bg-zinc-950/75 backdrop-blur-xl">
@@ -38,7 +46,7 @@ export async function Navbar() {
               Bounties
             </Link>
           </nav>
-          <NavbarAuthActions isLoggedIn={Boolean(user)} />
+          <NavbarAuthActions isLoggedIn={Boolean(user)} dashboardHref={dashboardHref} />
         </div>
       </div>
     </header>

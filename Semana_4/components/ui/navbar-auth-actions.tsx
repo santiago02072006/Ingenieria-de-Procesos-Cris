@@ -7,9 +7,10 @@ import { Button } from "./button";
 
 type NavbarAuthActionsProps = {
   isLoggedIn: boolean;
+  dashboardHref?: string;
 };
 
-export function NavbarAuthActions({ isLoggedIn }: NavbarAuthActionsProps) {
+export function NavbarAuthActions({ isLoggedIn, dashboardHref = "/" }: NavbarAuthActionsProps) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
 
@@ -23,9 +24,14 @@ export function NavbarAuthActions({ isLoggedIn }: NavbarAuthActionsProps) {
 
   if (isLoggedIn) {
     return (
-      <Button type="button" variant="outline" size="sm" disabled={loading} onClick={handleSignOut}>
-        {loading ? "Saliendo…" : "Cerrar sesión"}
-      </Button>
+      <div className="flex items-center gap-2">
+        <Button href={dashboardHref} variant="ghost" size="sm">
+          Mi Panel
+        </Button>
+        <Button type="button" variant="outline" size="sm" disabled={loading} onClick={handleSignOut}>
+          {loading ? "Saliendo…" : "Cerrar sesión"}
+        </Button>
+      </div>
     );
   }
 

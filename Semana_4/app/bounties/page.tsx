@@ -26,15 +26,6 @@ export default async function BountiesPage() {
             Explora retos publicados por clientes. Cada tarjeta resume título, descripción y presupuesto de referencia.
           </p>
         </div>
-        <div className="flex shrink-0 flex-wrap gap-3">
-          <Button href="/" variant="ghost">
-            Inicio
-          </Button>
-          <Button href="/marketplace" variant="outline">
-            Marketplace
-          </Button>
-          <Button href="/login">Iniciar sesión</Button>
-        </div>
       </div>
 
       {error ? (

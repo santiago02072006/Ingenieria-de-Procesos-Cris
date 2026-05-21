@@ -133,7 +133,7 @@ export default async function ClienteDashboardPage() {
                               : "border-zinc-700 bg-zinc-950/60 text-zinc-400",
                           ].join(" ")}
                         >
-                          {p.status}
+                          {problemClosed ? "Completado" : p.status}
                         </span>
                       </div>
                       <CardDescription className="line-clamp-3">{p.description}</CardDescription>

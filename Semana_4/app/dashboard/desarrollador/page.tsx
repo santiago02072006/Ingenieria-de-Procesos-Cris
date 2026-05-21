@@ -36,9 +36,11 @@ export default async function DesarrolladorDashboardPage() {
   const problemIds = [...new Set(list.map((s) => s.problem_id).filter((id): id is string => Boolean(id)))];
 
   let problemTitles = new Map<string, string>();
+  let problemStatuses = new Map<string, string>();
   if (problemIds.length > 0) {
-    const { data: problems } = await supabase.from("problems").select("id,title").in("id", problemIds);
+    const { data: problems } = await supabase.from("problems").select("id,title,status").in("id", problemIds);
     problemTitles = new Map((problems ?? []).map((row: { id: string; title: string }) => [row.id, row.title]));
+    problemStatuses = new Map((problems ?? []).map((row: { id: string; status: string }) => [row.id, row.status]));
   }
 
   return (
@@ -84,9 +86,13 @@ export default async function DesarrolladorDashboardPage() {
         ) : null}
 
         <ul className="mt-6 space-y-4">
-          {list.map((s) => {
+            {list.map((s) => {
             const bountyTitle = s.problem_id ? problemTitles.get(s.problem_id) : undefined;
-            const statusLabel = (s.status ?? "sin estado").toString();
+            const problemStatus = s.problem_id ? problemStatuses.get(s.problem_id) : undefined;
+            let statusLabel = (s.status ?? "sin estado").toString();
+            if (problemStatus === "closed" && s.status === "submitted") {
+              statusLabel = "Finalizado";
+            }
 
             return (
               <li key={s.id}>

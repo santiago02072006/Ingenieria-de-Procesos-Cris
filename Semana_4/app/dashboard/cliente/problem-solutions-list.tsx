@@ -53,15 +53,15 @@ export function ProblemSolutionsList({ problemId, problemClosed, solutions }: Pr
 
           return (
             <li key={s.id}>
-              <Card
-                className={[
-                  "border-zinc-800/80 bg-zinc-950/30",
-                  isWinner ? "border-emerald-500/40 ring-1 ring-emerald-500/25" : "",
-                  problemClosed && !isWinner ? "opacity-60" : "",
-                ]
-                  .filter(Boolean)
-                  .join(" ")}
-              >
+                <Card
+                  className={[
+                    "border-zinc-800/80 bg-zinc-950/30",
+                    isWinner ? "border-emerald-500/40 ring-1 ring-emerald-500/25 border-emerald-500/50 bg-emerald-500/5" : "",
+                    problemClosed && !isWinner ? "opacity-60" : "",
+                  ]
+                    .filter(Boolean)
+                    .join(" ")}
+                >
                 <CardHeader className="pb-2">
                   <div className="flex flex-wrap items-start justify-between gap-3">
                     <div className="min-w-0 flex-1">
@@ -113,7 +113,7 @@ export function ProblemSolutionsList({ problemId, problemClosed, solutions }: Pr
                   <AcceptSolutionButton
                     solutionId={s.id}
                     problemId={problemId}
-                    disabled={!canAccept}
+                    disabled={problemClosed || isWinner}
                     disabledReason={disabledReason}
                   />
                 </CardContent>
