@@ -1,3 +1,6 @@
+/*
+
+
 import { Link } from 'react-router';
 import { motion } from 'motion/react';
 import {
@@ -93,7 +96,7 @@ export default function LandingPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-background via-background to-card">
-      {/* Navigation */}
+      {/* Navigation }
       <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-xl border-b border-border">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
@@ -135,7 +138,7 @@ export default function LandingPage() {
         </div>
       </nav>
 
-      {/* Hero Section */}
+      {/* Hero Section }
       <section className="pt-32 pb-20 px-6">
         <div className="max-w-7xl mx-auto">
           <motion.div
@@ -181,7 +184,7 @@ export default function LandingPage() {
             </div>
           </motion.div>
 
-          {/* Stats */}
+          {/* Stats }
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
@@ -202,7 +205,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* How It Works */}
+      {/* How It Works }
       <section className="py-20 px-6 bg-gradient-to-b from-card to-background">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
@@ -230,7 +233,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Features Grid */}
+      {/* Features Grid }
       <section className="py-20 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
@@ -261,7 +264,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* CTA Section }
       <section className="py-20 px-6 bg-gradient-to-br from-primary/10 via-background to-accent/10">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
@@ -288,7 +291,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Footer */}
+      {/* Footer }
       <footer className="border-t border-border py-12 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-10">
@@ -346,3 +349,10 @@ export default function LandingPage() {
     </div>
   );
 }
+*/ 
+
+
+
+
+
+
