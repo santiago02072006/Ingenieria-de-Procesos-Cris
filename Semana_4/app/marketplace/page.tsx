@@ -16,10 +16,17 @@ import {
   ArrowRight,
 } from "lucide-react";
 
-export default async function MarketplacePage(props: { searchParams?: { q?: string } } = {}) {
-  const searchParams = props.searchParams;
-  const q = (searchParams?.q ?? "").trim();
+export default async function MarketplacePage(props: { 
+  searchParams?: Promise<{ q?: string | string[] | undefined }> 
+}) {
+  // 1. Esperamos a que la promesa de searchParams se resuelva
+  const searchParams = await props.searchParams;
+  
+  // 2. Extraemos 'q' de forma segura asegurándonos de que sea un string
+  const rawQ = searchParams?.q;
+  const q = (Array.isArray(rawQ) ? rawQ[0] : rawQ ?? "").trim();
 
+  // El resto de tu código de Supabase sigue exactamente igual...
   const supabase = await createServerSupabaseClient();
   let query = supabase
     .from("solutions")
