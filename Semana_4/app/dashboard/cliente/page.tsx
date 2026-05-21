@@ -3,7 +3,7 @@ import { createServerSupabaseClient } from "@/lib/supabaseServer";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Code2, Home, Target, TrendingUp, Cloud, DollarSign, FileText, Shield, BarChart3, Settings, Bell, Search as SearchIcon } from "lucide-react";
+import { Code2, Home, Target, TrendingUp, Cloud, DollarSign, FileText, Shield, BarChart3, Settings, PlusSquare, Bell, Search as SearchIcon } from "lucide-react";
 import { CreateProblemForm } from "./CreateProblemForm";
 import { formatBudgetEUR, type ProblemRow } from "@/lib/problems";
 import type { SolutionRow } from "@/lib/solutions";
@@ -99,6 +99,10 @@ export default async function ClienteDashboardPage() {
           <Link href="/marketplace" className="flex items-center gap-3 px-3 py-2 rounded-lg text-app-muted hover:bg-app-card-60">
             <Code2 className="w-4 h-4" />
             <span>Marketplace</span>
+          </Link>
+          <Link href="/dashboard/cliente/publish-challenge" className="flex items-center gap-3 px-3 py-2 rounded-lg text-app-muted hover:bg-app-card-60">
+            <PlusSquare className="w-4 h-4" />
+            <span>Publicar problema</span>
           </Link>
           <Link href="/roi" className="flex items-center gap-3 px-3 py-2 rounded-lg text-app-muted hover:bg-app-card-60">
             <TrendingUp className="w-4 h-4" />
