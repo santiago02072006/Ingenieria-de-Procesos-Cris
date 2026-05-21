@@ -16,10 +16,20 @@ export function NavbarAuthActions({ isLoggedIn, dashboardHref = "/" }: NavbarAut
 
   async function handleSignOut() {
     setLoading(true);
-    const supabase = createClient();
-    await supabase.auth.signOut();
-    router.push("/");
-    router.refresh();
+    try {
+      const supabase = createClient();
+      const { error } = await supabase.auth.signOut();
+      if (error) {
+        console.error("Sign out error:", error);
+        setLoading(false);
+        return;
+      }
+      // Force a full-page navigation so server-side session/cookies are re-evaluated
+      window.location.replace("/");
+    } catch (err) {
+      console.error(err);
+      setLoading(false);
+    }
   }
 
   if (isLoggedIn) {
