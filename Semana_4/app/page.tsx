@@ -29,32 +29,56 @@ export default function HomePage() {
       />
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-indigo-500/40 to-transparent" aria-hidden />
 
-      <section className="relative mx-auto max-w-6xl px-4 pb-20 pt-16 sm:px-6 sm:pt-20 lg:px-8 lg:pt-28">
-        <div className="mx-auto max-w-3xl text-center">
-          <p className="mb-4 inline-flex items-center rounded-full border border-zinc-800 bg-zinc-900/60 px-3 py-1 text-xs font-medium text-zinc-400 backdrop-blur">
-            MVP · Next.js · Supabase
-          </p>
-          <h1 className="text-balance bg-gradient-to-b from-zinc-100 to-zinc-400 bg-clip-text text-4xl font-bold tracking-tight text-transparent sm:text-5xl lg:text-6xl">
-            Convierte problemas empresariales en soluciones reutilizables.
-          </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-zinc-400 sm:text-xl">
-            DevSolve es el ecosistema donde los clientes publican retos concretos y los desarrolladores entregan piezas de software que otros pueden adoptar,
-            extender y operar en la nube.
-          </p>
-          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-5">
-            <Button href="/bounties" size="lg" className="w-full min-w-[200px] sm:w-auto">
-              Publicar Problema
-            </Button>
-            <Button href="/marketplace" variant="outline" size="lg" className="w-full min-w-[200px] sm:w-auto">
-              Explorar Soluciones
-            </Button>
+      <section className="relative mx-auto max-w-6xl px-4 pb-20 pt-20 sm:pt-24 lg:pt-32">
+        {/* Background accents */}
+        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+          <div className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/3 transform blur-3xl">
+            <div className="h-[420px] w-[900px] rounded-full bg-gradient-to-r from-indigo-600/20 via-violet-600/15 to-cyan-400/10 opacity-60" />
           </div>
-          <p className="mt-8 text-sm text-zinc-500">
-            ¿Eres desarrollador?{" "}
-            <Link href="/login" className="font-medium text-indigo-400 underline-offset-4 hover:text-indigo-300 hover:underline">
-              Accede al tablero de bounties
-            </Link>
-          </p>
+          <div className="absolute right-0 bottom-0 -translate-x-1/3 translate-y-1/3 transform blur-2xl">
+            <div className="h-[220px] w-[420px] rounded-full bg-gradient-to-tr from-rose-500/8 to-amber-400/6 opacity-60" />
+          </div>
+        </div>
+
+        <div className="mx-auto max-w-3xl">
+          <div className="rounded-2xl border border-white/6 bg-gradient-to-b from-white/3 via-white/5 to-white/2 px-8 py-12 shadow-lg backdrop-blur-md">
+            <p className="inline-flex items-center gap-2 rounded-full bg-indigo-700/10 px-3 py-1 text-sm font-medium text-indigo-200/90">
+              MVP · Next.js · Supabase
+            </p>
+
+            <h1
+              className="mt-6 bg-clip-text text-4xl font-extrabold leading-tight text-transparent sm:text-5xl lg:text-6xl"
+              style={{ backgroundImage: "linear-gradient(90deg,#f8fafc,#e6eefc 45%,#c7d8ff)" }}
+            >
+              Convierte problemas empresariales en soluciones reutilizables.
+            </h1>
+
+            <p className="mt-4 text-lg text-zinc-200/90 max-w-2xl">
+              DevSolve es el ecosistema donde los clientes publican retos concretos y los desarrolladores entregan piezas de software
+              que otros pueden adoptar, extender y operar en la nube.
+            </p>
+
+            <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-start">
+              <Button
+                href="/bounties"
+                size="lg"
+                className="w-full min-w-[200px] rounded-md bg-gradient-to-r from-indigo-500 to-violet-500 text-white shadow-md hover:scale-[1.02] transition-transform sm:w-auto"
+              >
+                Publicar Problema
+              </Button>
+
+              <Button href="/marketplace" variant="outline" size="lg" className="w-full min-w-[200px] sm:w-auto">
+                Explorar Soluciones
+              </Button>
+            </div>
+
+            <p className="mt-6 text-sm text-zinc-300/80 text-center sm:text-left">
+              ¿Eres desarrollador?{' '}
+              <Link href="/login" className="font-medium text-indigo-300 underline-offset-4 hover:text-indigo-200 hover:underline">
+                Accede al tablero de bounties
+              </Link>
+            </p>
+          </div>
         </div>
       </section>
 
