@@ -15,6 +15,9 @@ import {
   Play,
   Lock,
 } from "lucide-react";
+import { createServerSupabaseClient } from "@/lib/supabaseServer";
+import { dashboardPathForRole } from "@/lib/profiles";
+import { NavbarAuthActions } from "@/components/ui/navbar-auth-actions";
 
 const stats = [
   { label: "Soluciones Reutilizadas", value: "15.2K", icon: Box },
@@ -94,7 +97,17 @@ const howItWorks = [
   },
 ];
 
-export default function HomePage() {
+export default async function HomePage() {
+  const supabase = await createServerSupabaseClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  let dashboardHref = "/";
+  if (user) {
+    const { data: profile } = await supabase.from("profiles").select("role").eq("id", user.id).maybeSingle();
+    dashboardHref = dashboardPathForRole(profile?.role);
+  }
   return (
     <div className="min-h-screen bg-gradient-to-b from-background via-background to-card">
 
@@ -136,18 +149,7 @@ export default function HomePage() {
           </div>
 
           <div className="flex items-center gap-3">
-            <Link
-              href="/login"
-              className="px-4 py-2 text-sm text-foreground hover:text-primary transition-colors"
-            >
-              Iniciar Sesión
-            </Link>
-            <Link
-              href="/register"
-              className="px-4 py-2 text-sm bg-primary hover:bg-primary/90 text-white rounded-lg transition-colors"
-            >
-              Comenzar
-            </Link>
+            <NavbarAuthActions isLoggedIn={Boolean(user)} dashboardHref={dashboardHref} />
           </div>
         </div>
       </nav>
