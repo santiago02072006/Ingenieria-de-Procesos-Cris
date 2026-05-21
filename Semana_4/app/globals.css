@@ -1,9 +1,135 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+:root {
+  --font-size: 16px;
+  --background: #0a0a0f;
+  --foreground: #f5f5f7;
+  --card: #13131a;
+  --card-foreground: #f5f5f7;
+  --popover: #13131a;
+  --popover-foreground: #f5f5f7;
+  --primary: #ef4444;
+  --primary-foreground: #ffffff;
+  --secondary: #1c1c24;
+  --secondary-foreground: #f5f5f7;
+  --muted: #27272f;
+  --muted-foreground: #9ca3af;
+  --accent: #dc2626;
+  --accent-foreground: #ffffff;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --border: rgba(255, 255, 255, 0.1);
+  --input: rgba(255, 255, 255, 0.05);
+  --input-background: rgba(255, 255, 255, 0.05);
+  --switch-background: #27272f;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --ring: #ef4444;
+  --chart-1: #ef4444;
+  --chart-2: #f97316;
+  --chart-3: #84cc16;
+  --chart-4: #06b6d4;
+  --chart-5: #8b5cf6;
+  --radius: 0.75rem;
+  --sidebar: #0f0f14;
+  --sidebar-foreground: #f5f5f7;
+  --sidebar-primary: #ef4444;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #1c1c24;
+  --sidebar-accent-foreground: #f5f5f7;
+  --sidebar-border: rgba(255, 255, 255, 0.1);
+  --sidebar-ring: #ef4444;
+}
+
+.dark {
+  --background: #0a0a0f;
+  --foreground: #f5f5f7;
+  --card: #13131a;
+  --card-foreground: #f5f5f7;
+  --popover: #13131a;
+  --popover-foreground: #f5f5f7;
+  --primary: #ef4444;
+  --primary-foreground: #ffffff;
+  --secondary: #1c1c24;
+  --secondary-foreground: #f5f5f7;
+  --muted: #27272f;
+  --muted-foreground: #9ca3af;
+  --accent: #dc2626;
+  --accent-foreground: #ffffff;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --border: rgba(255, 255, 255, 0.1);
+  --input: rgba(255, 255, 255, 0.05);
+  --ring: #ef4444;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --chart-1: #ef4444;
+  --chart-2: #f97316;
+  --chart-3: #84cc16;
+  --chart-4: #06b6d4;
+  --chart-5: #8b5cf6;
+  --sidebar: #0f0f14;
+  --sidebar-foreground: #f5f5f7;
+  --sidebar-primary: #ef4444;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #1c1c24;
+  --sidebar-accent-foreground: #f5f5f7;
+  --sidebar-border: rgba(255, 255, 255, 0.1);
+  --sidebar-ring: #ef4444;
+}
+
+
+/* Tailwind v3 compatibility: avoid unknown at-rules (@custom-variant, @theme).
+   Keep CSS variables for the palette and apply safe base styles using standard CSS.
+*/
 
 @layer base {
   html {
-    @apply scroll-smooth antialiased;
+    font-size: var(--font-size);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+  }
+
+  /* sensible defaults without relying on undefined CSS tokens */
+  button {
+    font-weight: 500;
+  }
+
+  input,
+  textarea,
+  select {
+    font-weight: 400;
+  }
+}
+
+/* Semantic utilities to map legacy Tailwind color classes to the app palette */
+@layer components {
+  .bg-app-card { background-color: var(--card); }
+  .bg-app-card-75 { background-color: rgba(19,19,26,0.75); }
+  .bg-app-card-60 { background-color: rgba(19,19,26,0.6); }
+  .bg-app-card-50 { background-color: rgba(19,19,26,0.5); }
+  .bg-app-card-40 { background-color: rgba(19,19,26,0.4); }
+  .bg-app-card-35 { background-color: rgba(19,19,26,0.35); }
+  .bg-app-card-30 { background-color: rgba(19,19,26,0.3); }
+  .bg-app-surface-55 { background-color: rgba(19,19,20,0.55); }
+
+  .text-app-muted { color: var(--muted-foreground); }
+  .text-app-muted-strong { color: var(--muted); }
+  .text-app-foreground { color: var(--foreground); }
+
+  .border-app { border-color: var(--border); }
+  .border-app-strong { border-color: rgba(255,255,255,0.12); }
+
+  .bg-primary { background-color: var(--primary); }
+  .bg-primary-15 { background-color: rgba(239,68,68,0.15); }
+  .text-primary { color: var(--primary); }
+  .shadow-primary { box-shadow: 0 10px 30px rgba(239,68,68,0.08); }
+
+  .placeholder-app-muted::placeholder { color: var(--muted-foreground); }
 }

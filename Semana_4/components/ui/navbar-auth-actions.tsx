@@ -37,7 +37,7 @@ export function NavbarAuthActions({ isLoggedIn, dashboardHref = "/" }: NavbarAut
 
   return (
     <>
-      <Button href="/register" variant="ghost" size="sm" className="text-zinc-400 hover:text-zinc-100">
+      <Button href="/register" variant="ghost" size="sm" className="text-app-muted hover:text-app-foreground">
         Registro
       </Button>
       <Button href="/login" variant="outline" size="sm">

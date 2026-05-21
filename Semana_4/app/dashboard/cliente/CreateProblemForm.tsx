@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 const fieldBase =
-  "w-full rounded-lg border border-zinc-800 bg-zinc-900/55 px-3 py-2 text-sm text-zinc-100 placeholder:text-zinc-500 transition-colors focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500";
+  "w-full rounded-lg border border-app bg-app-surface-55 px-3 py-2 text-sm text-app-foreground placeholder-app-muted transition-colors focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary";
 
 export function CreateProblemForm() {
   const router = useRouter();
@@ -71,7 +71,7 @@ export function CreateProblemForm() {
   }
 
   return (
-    <Card className="border-zinc-800/90">
+    <Card className="border-app">
       <CardHeader>
         <CardTitle>Publicar un problema</CardTitle>
         <CardDescription>Los datos se guardan en Supabase y quedan visibles en Bounties mientras el estado sea abierto.</CardDescription>
@@ -87,7 +87,7 @@ export function CreateProblemForm() {
             autoComplete="off"
           />
           <div className="flex w-full flex-col gap-1.5">
-            <label htmlFor={descId} className="text-sm font-medium text-zinc-300">
+            <label htmlFor={descId} className="text-sm font-medium text-app-muted">
               Descripción
             </label>
             <textarea

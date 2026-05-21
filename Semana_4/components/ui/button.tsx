@@ -6,11 +6,11 @@ export type ButtonSize = "sm" | "md" | "lg";
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary:
-    "bg-indigo-500 text-white shadow-lg shadow-indigo-500/25 hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500",
+    "bg-primary text-white shadow-lg shadow-primary hover:bg-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary",
   outline:
-    "border border-zinc-700 bg-zinc-950/50 text-zinc-100 hover:border-indigo-500/40 hover:bg-zinc-900/80",
+    "border border-app-strong bg-app-card-50 text-app-foreground hover:border-app hover:bg-app-card-60",
   ghost:
-    "text-zinc-300 hover:bg-zinc-900/70 hover:text-indigo-300",
+    "text-app-muted hover:bg-app-card-60 hover:text-primary",
 };
 
 const sizeClasses: Record<ButtonSize, string> = {

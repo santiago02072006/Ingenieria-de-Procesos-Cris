@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Navbar } from "@/components/ui/navbar";
+// @ts-ignore
 import "./globals.css";
 
 const inter = Inter({
@@ -22,7 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className={inter.variable}>
-      <body className={`${inter.className} min-h-screen bg-zinc-950 text-zinc-100 antialiased`}>
+      <body className={`${inter.className} min-h-screen antialiased`}>
         <Navbar />
         <main>{children}</main>
       </body>

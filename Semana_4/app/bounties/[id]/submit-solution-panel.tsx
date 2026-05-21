@@ -9,7 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 const fieldBase =
-  "w-full rounded-lg border border-zinc-800 bg-zinc-900/55 px-3 py-2 text-sm text-zinc-100 placeholder:text-zinc-500 transition-colors focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500";
+  "w-full rounded-lg border border-app bg-app-surface-55 px-3 py-2 text-sm text-app-foreground placeholder-app-muted transition-colors focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary";
 
 type SubmitSolutionPanelProps = {
   problemId: string;
@@ -124,9 +124,9 @@ export function SubmitSolutionPanel({ problemId, problemOpen }: SubmitSolutionPa
     router.refresh();
   }
 
-  if (!problemOpen) {
+    if (!problemOpen) {
     return (
-      <Card className="border-zinc-800/90">
+      <Card className="border-app">
         <CardHeader>
           <CardTitle className="text-base">Envío de soluciones</CardTitle>
           <CardDescription>Este problema no está abierto; no se aceptan nuevas propuestas.</CardDescription>
@@ -136,18 +136,18 @@ export function SubmitSolutionPanel({ problemId, problemOpen }: SubmitSolutionPa
   }
 
   return (
-    <Card className="border-zinc-800/90">
+    <Card className="border-app">
       <CardHeader>
         <CardTitle className="text-base">Propuesta de solución</CardTitle>
         <CardDescription>
-          Completa los datos de tu oferta. Se guardará en <span className="font-mono text-zinc-500">solutions</span> vinculada a este bounty.
+          Completa los datos de tu oferta. Se guardará en <span className="font-mono text-app-muted">solutions</span> vinculada a este bounty.
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
         {roleGate === "login" ? (
-          <p className="rounded-lg border border-zinc-800 bg-zinc-950/50 px-3 py-2 text-sm text-zinc-300">
+          <p className="rounded-lg border border-app bg-app-card-50 px-3 py-2 text-sm text-app-muted">
             Debes iniciar sesión como desarrollador para enviar una solución.{" "}
-            <Link href="/login" className="font-medium text-indigo-400 underline-offset-4 hover:underline">
+            <Link href="/login" className="font-medium text-primary underline-offset-4 hover:underline">
               Ir a login
             </Link>
           </p>
@@ -161,7 +161,7 @@ export function SubmitSolutionPanel({ problemId, problemOpen }: SubmitSolutionPa
         {success ? (
           <p className="rounded-lg border border-emerald-500/30 bg-emerald-950/25 px-3 py-2 text-sm text-emerald-100" role="status">
             {success}{" "}
-            <Link href="/dashboard/desarrollador" className="font-medium text-indigo-300 underline-offset-4 hover:underline">
+            <Link href="/dashboard/desarrollador" className="font-medium text-primary underline-offset-4 hover:underline">
               Ver mis soluciones
             </Link>
           </p>
@@ -181,7 +181,7 @@ export function SubmitSolutionPanel({ problemId, problemOpen }: SubmitSolutionPa
               onChange={(e) => setTitle(e.target.value)}
             />
             <div className="flex w-full flex-col gap-1.5">
-              <label htmlFor={descId} className="text-sm font-medium text-zinc-300">
+              <label htmlFor={descId} className="text-sm font-medium text-app-muted">
                 Descripción
               </label>
               <textarea

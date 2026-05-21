@@ -66,11 +66,9 @@ export default async function ClienteDashboardPage() {
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8">
-      <p className="text-xs font-medium uppercase tracking-wider text-indigo-400">Dashboard</p>
-      <h1 className="mt-2 text-3xl font-semibold tracking-tight text-zinc-100">Área de cliente</h1>
-      <p className="mt-3 max-w-2xl text-zinc-400">
-        Hola{user.email ? `, ${user.email}` : ""}. Publica problemas, revisa propuestas de desarrolladores y acepta la solución ganadora.
-      </p>
+      <p className="text-xs font-medium uppercase tracking-wider text-primary">Dashboard</p>
+      <h1 className="mt-2 text-3xl font-semibold tracking-tight text-app-foreground">Área de cliente</h1>
+      <p className="mt-3 max-w-2xl text-app-muted">{`Hola${user.email ? `, ${user.email}` : ""}. Publica problemas, revisa propuestas de desarrolladores y acepta la solución ganadora.`}</p>
 
       <div className="mt-10 flex flex-wrap gap-3">
         <Button href="/bounties" variant="outline">
@@ -87,9 +85,7 @@ export default async function ClienteDashboardPage() {
         </aside>
 
         <section className="order-2 lg:order-1" aria-labelledby="mis-problemas-heading">
-          <h2 id="mis-problemas-heading" className="text-xl font-semibold text-zinc-100">
-            Mis problemas
-          </h2>
+          <h2 id="mis-problemas-heading" className="text-xl font-semibold text-app-foreground">Mis problemas</h2>
           {problemsError ? (
             <p className="mt-4 rounded-lg border border-red-500/40 bg-red-950/30 px-3 py-2 text-sm text-red-200" role="alert">
               No se pudieron cargar los problemas: {problemsError.message}
@@ -100,13 +96,13 @@ export default async function ClienteDashboardPage() {
               No se pudieron cargar las soluciones: {solutionsError.message}
             </p>
           ) : null}
+
           {!problemsError && list.length === 0 ? (
-            <Card className="mt-4 border-dashed border-zinc-700/80 bg-zinc-950/40">
-              <CardContent className="py-10 text-center text-sm text-zinc-500">
-                Aún no has publicado ningún problema. Usa el formulario para crear el primero.
-              </CardContent>
+            <Card className="mt-4 border-dashed border-app bg-app-card-40">
+              <CardContent className="py-10 text-center text-sm text-app-muted">Aún no has publicado ningún problema. Usa el formulario para crear el primero.</CardContent>
             </Card>
           ) : null}
+
           <ul className="mt-4 space-y-6">
             {list.map((p) => {
               const problemClosed = p.status === "closed";
@@ -117,7 +113,7 @@ export default async function ClienteDashboardPage() {
                   <Card
                     className={[
                       "overflow-hidden transition-colors",
-                      problemClosed ? "border-emerald-500/20" : "hover:border-indigo-500/25",
+                      problemClosed ? "border-emerald-500/20" : "hover:border-app",
                     ]
                       .filter(Boolean)
                       .join(" ")}
@@ -130,7 +126,7 @@ export default async function ClienteDashboardPage() {
                             "shrink-0 rounded-full border px-2.5 py-0.5 text-xs font-medium uppercase tracking-wide",
                             problemClosed
                               ? "border-emerald-500/40 bg-emerald-950/40 text-emerald-300"
-                              : "border-zinc-700 bg-zinc-950/60 text-zinc-400",
+                              : "border-app bg-app-card-60 text-app-muted",
                           ].join(" ")}
                         >
                           {problemClosed ? "Completado" : p.status}
@@ -138,11 +134,11 @@ export default async function ClienteDashboardPage() {
                       </div>
                       <CardDescription className="line-clamp-3">{p.description}</CardDescription>
                     </CardHeader>
-                    <CardContent className="border-t border-zinc-800/80 pt-4">
-                      <div className="flex flex-wrap items-center justify-between gap-3 text-sm text-zinc-500">
-                        <span className="font-medium text-indigo-300">{formatBudgetEUR(p.budget)}</span>
+                    <CardContent className="border-t border-app pt-4">
+                      <div className="flex flex-wrap items-center justify-between gap-3 text-sm text-app-muted">
+                        <span className="font-medium text-primary">{formatBudgetEUR(p.budget)}</span>
                         {p.created_at ? (
-                          <time dateTime={p.created_at} className="text-xs text-zinc-500">
+                          <time dateTime={p.created_at} className="text-xs text-app-muted">
                             {new Date(p.created_at).toLocaleDateString("es-ES", {
                               day: "numeric",
                               month: "short",
@@ -151,11 +147,7 @@ export default async function ClienteDashboardPage() {
                           </time>
                         ) : null}
                       </div>
-                      <ProblemSolutionsList
-                        problemId={p.id}
-                        problemClosed={problemClosed}
-                        solutions={problemSolutions}
-                      />
+                      <ProblemSolutionsList problemId={p.id} problemClosed={problemClosed} solutions={problemSolutions} />
                     </CardContent>
                   </Card>
                 </li>

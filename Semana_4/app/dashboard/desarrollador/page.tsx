@@ -45,9 +45,9 @@ export default async function DesarrolladorDashboardPage() {
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
-      <p className="text-xs font-medium uppercase tracking-wider text-indigo-400">Dashboard</p>
-      <h1 className="mt-2 text-3xl font-semibold tracking-tight text-zinc-100">Área de desarrollador</h1>
-      <p className="mt-3 text-zinc-400">
+      <p className="text-xs font-medium uppercase tracking-wider text-primary">Dashboard</p>
+      <h1 className="mt-2 text-3xl font-semibold tracking-tight text-app-foreground">Área de desarrollador</h1>
+      <p className="mt-3 text-app-muted">
         Hola{user.email ? `, ${user.email}` : ""}. Aquí ves las soluciones que has enviado a bounties y su estado.
       </p>
 
@@ -64,7 +64,7 @@ export default async function DesarrolladorDashboardPage() {
       </div>
 
       <section className="mt-12" aria-labelledby="mis-soluciones-heading">
-        <h2 id="mis-soluciones-heading" className="text-xl font-semibold text-zinc-100">
+        <h2 id="mis-soluciones-heading" className="text-xl font-semibold text-app-foreground">
           Mis soluciones enviadas
         </h2>
 
@@ -75,10 +75,10 @@ export default async function DesarrolladorDashboardPage() {
         ) : null}
 
         {!solutionsError && list.length === 0 ? (
-          <Card className="mt-4 border-dashed border-zinc-700/80 bg-zinc-950/40">
-            <CardContent className="py-10 text-center text-sm text-zinc-500">
+          <Card className="mt-4 border-dashed border-app bg-app-card-40">
+            <CardContent className="py-10 text-center text-sm text-app-muted">
               Aún no has enviado ninguna solución.{" "}
-              <Link href="/bounties" className="font-medium text-indigo-400 underline-offset-4 hover:underline">
+              <Link href="/bounties" className="font-medium text-primary underline-offset-4 hover:underline">
                 Ver problemas abiertos
               </Link>
             </CardContent>
@@ -96,46 +96,38 @@ export default async function DesarrolladorDashboardPage() {
 
             return (
               <li key={s.id}>
-                <Card className="overflow-hidden transition-colors hover:border-indigo-500/25">
+                <Card className="overflow-hidden transition-colors hover:border-app hover:shadow-primary">
                   <CardHeader className="pb-2">
                     <div className="flex flex-wrap items-start justify-between gap-2">
                       <CardTitle className="text-base sm:text-lg">{s.title}</CardTitle>
-                      <span className="shrink-0 rounded-full border border-zinc-700 bg-zinc-950/60 px-2.5 py-0.5 text-xs font-medium uppercase tracking-wide text-zinc-300">
+                      <span className="shrink-0 rounded-full border border-app bg-app-card-60 px-2.5 py-0.5 text-xs font-medium uppercase tracking-wide text-app-muted">
                         {statusLabel}
                       </span>
                     </div>
                     <CardDescription className="line-clamp-2">{s.description}</CardDescription>
                   </CardHeader>
-                  <CardContent className="flex flex-col gap-3 border-t border-zinc-800/80 pt-4 text-sm text-zinc-500 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
+                  <CardContent className="flex flex-col gap-3 border-t border-app pt-4 text-sm text-app-muted sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
                     <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
-                      <span className="font-medium text-indigo-300">{formatBudgetEUR(s.price)}</span>
+                      <span className="font-medium text-primary">{formatBudgetEUR(s.price)}</span>
                       {s.problem_id ? (
-                        <span className="text-zinc-500">
+                        <span className="text-app-muted">
                           Bounty:{" "}
-                          <Link
-                            href={`/bounties/${s.problem_id}`}
-                            className="text-indigo-400 underline-offset-4 hover:text-indigo-300 hover:underline"
-                          >
+                          <Link href={`/bounties/${s.problem_id}`} className="text-primary underline-offset-4 hover:text-primary hover:underline">
                             {bountyTitle ?? "Ver detalle"}
                           </Link>
                         </span>
                       ) : (
-                        <span className="text-zinc-600">Sin problema vinculado</span>
+                        <span className="text-app-muted">Sin problema vinculado</span>
                       )}
                     </div>
                     <div className="flex flex-wrap items-center gap-3 text-xs">
                       {s.demo_url ? (
-                        <a
-                          href={s.demo_url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-indigo-400 underline-offset-4 hover:underline"
-                        >
+                        <a href={s.demo_url} target="_blank" rel="noopener noreferrer" className="text-primary underline-offset-4 hover:underline">
                           Demo
                         </a>
                       ) : null}
                       {s.created_at ? (
-                        <time dateTime={s.created_at} className="text-zinc-600">
+                        <time dateTime={s.created_at} className="text-app-muted">
                           {new Date(s.created_at).toLocaleDateString("es-ES", {
                             day: "numeric",
                             month: "short",

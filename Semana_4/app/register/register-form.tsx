@@ -146,13 +146,13 @@ export function RegisterForm({ mode }: RegisterFormProps) {
           />
         </>
       ) : (
-        <p className="rounded-lg border border-zinc-800 bg-zinc-900/50 px-3 py-2 text-sm text-zinc-300">
+        <p className="rounded-lg border border-app bg-app-card-50 px-3 py-2 text-sm text-app-muted">
           Tu cuenta aún no tiene perfil en DevSolve. Elige tu rol para continuar.
         </p>
       )}
 
       <fieldset className="space-y-3">
-        <legend className="text-sm font-medium text-zinc-300">Rol en DevSolve</legend>
+        <legend className="text-sm font-medium text-app-muted">Rol en DevSolve</legend>
         <div className="grid gap-3 sm:grid-cols-2">
           {(
             [
@@ -160,7 +160,7 @@ export function RegisterForm({ mode }: RegisterFormProps) {
               { value: "desarrollador" as const, title: "Desarrollador", desc: "Entregas y listas soluciones." },
             ] as const
           ).map((opt) => (
-            <Card key={opt.value} className={`cursor-pointer p-4 transition-colors ${role === opt.value ? "border-indigo-500/60 ring-1 ring-indigo-500/40" : "hover:border-zinc-700"}`}>
+            <Card key={opt.value} className={`cursor-pointer p-4 transition-colors ${role === opt.value ? "border-primary/60 ring-1 ring-primary/40" : "hover:border-app"}`}>
               <label className="flex cursor-pointer flex-col gap-1">
                 <div className="flex items-center gap-2">
                   <input
@@ -169,11 +169,11 @@ export function RegisterForm({ mode }: RegisterFormProps) {
                     value={opt.value}
                     checked={role === opt.value}
                     onChange={() => setRole(opt.value)}
-                    className="h-4 w-4 accent-indigo-500"
+                    className="h-4 w-4 accent-primary"
                   />
-                  <span className="font-medium text-zinc-100">{opt.title}</span>
+                  <span className="font-medium text-app-foreground">{opt.title}</span>
                 </div>
-                <span className="text-xs text-zinc-500">{opt.desc}</span>
+                <span className="text-xs text-app-muted">{opt.desc}</span>
               </label>
             </Card>
           ))}
@@ -186,7 +186,7 @@ export function RegisterForm({ mode }: RegisterFormProps) {
         </p>
       ) : null}
       {info ? (
-        <p className="rounded-lg border border-indigo-500/30 bg-indigo-950/30 px-3 py-2 text-sm text-indigo-100" role="status">
+        <p className="rounded-lg border border-primary/30 bg-primary-950/30 px-3 py-2 text-sm text-primary" role="status">
           {info}
         </p>
       ) : null}
@@ -196,9 +196,9 @@ export function RegisterForm({ mode }: RegisterFormProps) {
       </Button>
 
       {mode === "signup" ? (
-        <p className="text-center text-sm text-zinc-500">
+        <p className="text-center text-sm text-app-muted">
           ¿Ya tienes cuenta?{" "}
-          <Link href="/login" className="font-medium text-indigo-400 underline-offset-4 hover:text-indigo-300 hover:underline">
+          <Link href="/login" className="font-medium text-primary underline-offset-4 hover:text-primary hover:underline">
             Inicia sesión
           </Link>
         </p>

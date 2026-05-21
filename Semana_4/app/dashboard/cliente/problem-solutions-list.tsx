@@ -23,7 +23,7 @@ function statusLabel(status: string | null): string {
 export function ProblemSolutionsList({ problemId, problemClosed, solutions }: ProblemSolutionsListProps) {
   if (solutions.length === 0) {
     return (
-      <p className="mt-4 rounded-lg border border-dashed border-zinc-800 bg-zinc-950/40 px-3 py-4 text-center text-sm text-zinc-500">
+      <p className="mt-4 rounded-lg border border-dashed border-app bg-app-card-40 px-3 py-4 text-center text-sm text-app-muted">
         Aún no hay propuestas para este problema.
       </p>
     );
@@ -31,8 +31,8 @@ export function ProblemSolutionsList({ problemId, problemClosed, solutions }: Pr
 
   return (
     <div className="mt-4 space-y-3">
-      <h3 className="text-sm font-medium text-zinc-300">
-        Soluciones recibidas <span className="text-zinc-500">({solutions.length})</span>
+      <h3 className="text-sm font-medium text-app-muted">
+        Soluciones recibidas <span className="text-app-muted">({solutions.length})</span>
       </h3>
       {problemClosed ? (
         <p className="rounded-lg border border-emerald-500/30 bg-emerald-950/25 px-3 py-2 text-sm text-emerald-100">
@@ -55,7 +55,7 @@ export function ProblemSolutionsList({ problemId, problemClosed, solutions }: Pr
             <li key={s.id}>
                 <Card
                   className={[
-                    "border-zinc-800/80 bg-zinc-950/30",
+                    "border-app bg-app-card-30",
                     isWinner ? "border-emerald-500/40 ring-1 ring-emerald-500/25 border-emerald-500/50 bg-emerald-500/5" : "",
                     problemClosed && !isWinner ? "opacity-60" : "",
                   ]
@@ -72,35 +72,30 @@ export function ProblemSolutionsList({ problemId, problemClosed, solutions }: Pr
                         </span>
                       ) : null}
                     </div>
-                    <span className="shrink-0 rounded-full border border-zinc-700 bg-zinc-950/60 px-2.5 py-0.5 text-xs font-medium uppercase tracking-wide text-zinc-400">
+                    <span className="shrink-0 rounded-full border border-app bg-app-card-60 px-2.5 py-0.5 text-xs font-medium uppercase tracking-wide text-app-muted">
                       {statusLabel(s.status)}
                     </span>
                   </div>
-                  <CardDescription className="mt-2 whitespace-pre-wrap text-zinc-400">{s.description}</CardDescription>
+                  <CardDescription className="mt-2 whitespace-pre-wrap text-app-muted">{s.description}</CardDescription>
                 </CardHeader>
-                <CardContent className="flex flex-col gap-4 border-t border-zinc-800/80 pt-4 sm:flex-row sm:items-end sm:justify-between">
+                <CardContent className="flex flex-col gap-4 border-t border-app pt-4 sm:flex-row sm:items-end sm:justify-between">
                   <div className="space-y-2 text-sm">
                     <p>
-                      <span className="text-zinc-500">Precio solicitado: </span>
-                      <span className="font-medium text-indigo-300">{formatBudgetEUR(s.price)}</span>
+                      <span className="text-app-muted">Precio solicitado: </span>
+                      <span className="font-medium text-primary">{formatBudgetEUR(s.price)}</span>
                     </p>
                     {s.demo_url ? (
                       <p>
-                        <span className="text-zinc-500">Demo: </span>
-                        <a
-                          href={s.demo_url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-indigo-400 underline-offset-4 hover:text-indigo-300 hover:underline"
-                        >
+                        <span className="text-app-muted">Demo: </span>
+                        <a href={s.demo_url} target="_blank" rel="noopener noreferrer" className="text-primary underline-offset-4 hover:text-primary hover:underline">
                           Ver demo
                         </a>
                       </p>
                     ) : (
-                      <p className="text-zinc-600">Sin enlace de demo</p>
+                      <p className="text-app-muted">Sin enlace de demo</p>
                     )}
                     {s.created_at ? (
-                      <p className="text-xs text-zinc-600">
+                      <p className="text-xs text-app-muted">
                         Enviada{" "}
                         {new Date(s.created_at).toLocaleDateString("es-ES", {
                           day: "numeric",

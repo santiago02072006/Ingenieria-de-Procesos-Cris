@@ -92,9 +92,9 @@ export function LoginForm() {
       <Button type="submit" className="w-full" disabled={loading}>
         {loading ? "Entrando…" : "Continuar"}
       </Button>
-      <p className="text-center text-sm text-zinc-500">
+      <p className="text-center text-sm text-app-muted">
         ¿No tienes cuenta?{" "}
-        <Link href="/register" className="font-medium text-indigo-400 underline-offset-4 hover:text-indigo-300 hover:underline">
+        <Link href="/register" className="font-medium text-primary underline-offset-4 hover:text-primary hover:underline">
           Regístrate
         </Link>
       </p>

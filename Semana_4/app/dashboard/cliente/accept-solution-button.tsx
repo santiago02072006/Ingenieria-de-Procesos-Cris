@@ -51,7 +51,7 @@ export function AcceptSolutionButton({ solutionId, problemId, disabled = false, 
         {loading ? "Aceptando…" : "Aceptar solución"}
       </Button>
       {disabled && disabledReason ? (
-        <span className="text-xs text-zinc-500">{disabledReason}</span>
+        <span className="text-xs text-app-muted">{disabledReason}</span>
       ) : null}
       {error ? (
         <p className="text-xs text-red-400" role="alert">
